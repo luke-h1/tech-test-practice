@@ -19,7 +19,8 @@ export async function GET(request: Request) {
   const filteredResponses = searchResponses.filter(
     (response) =>
       response.title.toLowerCase().includes(query) ||
-      response.description.toLowerCase().includes(query)
+      response.description.toLowerCase().includes(query) || 
+      response.userRole.some(r => r.toLowerCase().includes(query))
   );
 
   const totalPages =
